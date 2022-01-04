@@ -9,6 +9,8 @@ class PrayerTimes {
   String hijrimonth;
   String sunrise;
   String sunset;
+  String hijriDay;
+  String hijriYear;
 
   PrayerTimes(
       {required this.today,
@@ -20,7 +22,9 @@ class PrayerTimes {
       required this.hijri,
       required this.hijrimonth,
       required this.sunrise,
-      required this.sunset});
+      required this.sunset,
+      required this.hijriDay,
+      required this.hijriYear});
 
   factory PrayerTimes.fromJason(Map<String, dynamic> json) {
     return PrayerTimes(
@@ -33,6 +37,8 @@ class PrayerTimes {
         sunrise: json['data']['timings']['Sunrise'],
         sunset: json['data']['timings']['Sunset'],
         hijri: json['data']['date']['hijri']['date'],
-        hijrimonth: json['data']['date']['hijri']['month']['ar']);
+        hijrimonth: json['data']['date']['hijri']['month']['en'],
+        hijriDay: json['data']['date']['hijri']['day'],
+        hijriYear: json['data']['date']['hijri']['year']);
   }
 }

@@ -36,6 +36,10 @@ dependencies:
   cupertino_icons: ^1.0.2
   http: ^0.13.3
   google_fonts: ^2.1.0
+  intl: ^0.17.0
+  carbon_icons: ^0.0.1+2
+  weather_icons: ^3.0.0
+  
 
 dev_dependencies:
   flutter_test:

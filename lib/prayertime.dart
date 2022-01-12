@@ -1,3 +1,5 @@
+/// <a href='https://www.freepik.com/vectors/background'>Background vector created by GarryKillian - www.freepik.com</a>
+
 import 'dart:ui';
 import 'package:carbon_icons/carbon_icons.dart';
 import 'package:flutter/material.dart';
@@ -46,7 +48,7 @@ class _PrayerTimeState extends State<PrayerTime> {
                           end: Alignment.bottomCenter),
                       image: DecorationImage(
                         repeat: ImageRepeat.repeat,
-                        image: AssetImage("asset/images/swatch4.png"),
+                        image: AssetImage("asset/images/pattern2.png"),
                       ),
                     ),
                     child: Padding(
@@ -59,7 +61,7 @@ class _PrayerTimeState extends State<PrayerTime> {
                             child: Container(
                               // height: MediaQuery.of(context).size.height - 200,
                               decoration: BoxDecoration(
-                                  color: Colors.white.withOpacity(.5),
+                                  color: Colors.white.withOpacity(.4),
                                   borderRadius: BorderRadius.circular(16)),
                               child: Column(
                                 children: [
@@ -81,7 +83,9 @@ class _PrayerTimeState extends State<PrayerTime> {
                                         ),
                                         const Spacer(),
                                         IconButton(
-                                            onPressed: () {},
+                                            onPressed: () {
+                                              creditAlert(context);
+                                            },
                                             icon: const Icon(
                                               Icons.more_vert,
                                               color: Color(0xff3C4E40),
@@ -295,7 +299,7 @@ class _PrayerTimeState extends State<PrayerTime> {
                                                             Expanded(
                                                               flex: 1,
                                                               child: Text(
-                                                                '${DateFormat.jm().format(DateFormat("hh:mm").parse('${content.luhar}'))}',
+                                                                '${DateFormat.jm().format(DateFormat("HH:mm").parse('${content.luhar}'))}',
                                                                 style: GoogleFonts.ibmPlexSans(
                                                                     fontSize:
                                                                         20,
@@ -578,5 +582,85 @@ class _PrayerTimeState extends State<PrayerTime> {
         ),
       ),
     );
+  }
+
+  void creditAlert(BuildContext context) {
+    showDialog(
+        barrierDismissible: true,
+        context: context,
+        builder: (_) {
+          return AlertDialog(
+            contentPadding: const EdgeInsets.fromLTRB(20, 20, 10, 20),
+            content: Container(
+              height: MediaQuery.of(context).size.height * .3,
+              decoration: BoxDecoration(
+                  color: Colors.white.withOpacity(.6),
+                  borderRadius: BorderRadius.circular(16)),
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.spaceAround,
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Center(
+                    child: Text(
+                      'KKY Prayer',
+                      style: GoogleFonts.ibmPlexSans(
+                          fontSize: 16,
+                          fontWeight: FontWeight.w700,
+                          color: const Color(0xff3C4E40)),
+                    ),
+                  ),
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    // crossAxisAlignment: CrossAxisAlignment.start,
+                    children: const [
+                      Expanded(
+                        flex: 2,
+                        child: Text(
+                          'Developed by',
+                          textAlign: TextAlign.left,
+                        ),
+                      ),
+                      SizedBox(
+                        width: 20,
+                      ),
+                      Expanded(flex: 3, child: Text('Irfan Ishak')),
+                    ],
+                  ),
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    // crossAxisAlignment: CrossAxisAlignment.start,
+                    children: const [
+                      Expanded(
+                        flex: 2,
+                        child: Text(
+                          'Designed by',
+                          textAlign: TextAlign.left,
+                        ),
+                      ),
+                      SizedBox(
+                        width: 20,
+                      ),
+                      Expanded(flex: 3, child: Text('VV')),
+                    ],
+                  ),
+                  Row(
+                    // mainAxisAlignment: MainAxisAlignment.start,
+                    // crossAxisAlignment: CrossAxisAlignment.start,
+                    children: const [
+                      Text(
+                        'Backgroud pattern',
+                        textAlign: TextAlign.left,
+                      ),
+                      SizedBox(
+                        width: 20,
+                      ),
+                      Expanded(child: Text('GarryKillian / Freepik')),
+                    ],
+                  ),
+                ],
+              ),
+            ),
+          );
+        });
   }
 }

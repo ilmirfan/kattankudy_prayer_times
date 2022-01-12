@@ -5,11 +5,12 @@ import 'package:kkyprayertime/prayertime.dart';
 void main() {
   WidgetsFlutterBinding.ensureInitialized();
   runApp(const MyApp());
-  SystemChrome.setSystemUIOverlayStyle(SystemUiOverlayStyle(
-    statusBarColor: Color(0xffFFF6EC), // status bar color
+  SystemChrome.setSystemUIOverlayStyle(const SystemUiOverlayStyle(
+    statusBarColor: Colors.transparent, //Color(0xffFFF6EC), // status bar color
     statusBarBrightness: Brightness.dark, //status bar brightness
     statusBarIconBrightness: Brightness.dark, //status bar icon brightness
-    systemNavigationBarColor: Color(0xffFFF6EC), // navigation bar color
+    systemNavigationBarColor:
+        Colors.transparent, //Color(0xffFFF6EC), // navigation bar color
     systemNavigationBarDividerColor:
         Color(0xffFFF6EC), //Navigation bar divider color
     systemNavigationBarIconBrightness:
@@ -24,11 +25,11 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
-      title: 'Kattankudy Prayer Times',
+      title: 'KKY Prayer',
       theme: ThemeData(
           primarySwatch: Colors.blue,
-          dividerTheme:
-              DividerThemeData(color: Color(0xff9DA79F), thickness: 0.25)),
+          dividerTheme: const DividerThemeData(
+              color: Color(0xff9DA79F), thickness: 0.25)),
       home: const PrayerTime(),
     );
   }

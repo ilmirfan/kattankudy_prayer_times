@@ -7,7 +7,7 @@ class Service {
   static Future<PrayerTimes?> fetchData() async {
     try {
       const url =
-          'http://api.aladhan.com/v1/timingsByCity?city=Kattankudy&country=Sri%20Lanka&method=3&tune=0,-5,2,2,4,1,0,6';
+          'https://api.aladhan.com/v1/timingsByCity?city=Kattankudy&country=Sri%20Lanka&method=3&tune=0,-5,2,2,4,1,0,6';
       final response = await http.get(Uri.parse(url));
 
       if (response.statusCode == 200) {

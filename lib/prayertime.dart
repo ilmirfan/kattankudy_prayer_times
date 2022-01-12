@@ -1,5 +1,3 @@
-/// <a href='https://www.freepik.com/vectors/background'>Background vector created by GarryKillian - www.freepik.com</a>
-
 import 'dart:ui';
 import 'package:carbon_icons/carbon_icons.dart';
 import 'package:flutter/material.dart';
@@ -8,6 +6,7 @@ import 'package:intl/intl.dart';
 import 'package:kkyprayertime/service.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:weather_icons/weather_icons.dart';
+import 'package:flutter/foundation.dart' show kIsWeb;
 
 class PrayerTime extends StatefulWidget {
   const PrayerTime({Key? key}) : super(key: key);
@@ -39,7 +38,9 @@ class _PrayerTimeState extends State<PrayerTime> {
               child: Column(
                 children: [
                   Container(
-                    height: MediaQuery.of(context).size.height - 27,
+                    height: kIsWeb
+                        ? MediaQuery.of(context).size.height
+                        : MediaQuery.of(context).size.height - 27,
                     width: MediaQuery.of(context).size.width,
                     decoration: const BoxDecoration(
                       gradient: LinearGradient(

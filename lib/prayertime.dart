@@ -34,10 +34,12 @@ class _PrayerTimeState extends State<PrayerTime> {
 
         body: Column(
           children: [
+            //pull to refresh currently not working because I am using Column on the top. Should be changed to ListView or some scrollable widget.
             RefreshIndicator(
               child: Column(
                 children: [
                   Container(
+                    //something I messedup here with the layout. I don't know the problem with my device or my code.
                     height: kIsWeb
                         ? MediaQuery.of(context).size.height
                         : MediaQuery.of(context).size.height - 27,

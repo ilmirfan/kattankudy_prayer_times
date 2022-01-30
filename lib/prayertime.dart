@@ -5,6 +5,8 @@ import 'package:kkyprayertime/model.dart';
 import 'package:intl/intl.dart';
 import 'package:kkyprayertime/service.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:kkyprayertime/widgets/timing.dart';
+import 'package:kkyprayertime/widgets/title_text.dart';
 import 'package:weather_icons/weather_icons.dart';
 import 'package:flutter/foundation.dart' show kIsWeb;
 
@@ -107,28 +109,12 @@ class _PrayerTimeState extends State<PrayerTime> {
                                               children: [
                                                 Column(
                                                   children: [
-                                                    Text(
-                                                      '${content.hijriDay} ${content.hijrimonth} ${content.hijriYear}',
-                                                      style: GoogleFonts
-                                                          .ibmPlexSans(
-                                                              fontSize: 18,
-                                                              fontWeight:
-                                                                  FontWeight
-                                                                      .w400,
-                                                              color: const Color(
-                                                                  0xff3C4E40)),
-                                                    ),
-                                                    Text(
-                                                      '${DateFormat.yMMMMEEEEd().format(aDateTime)}',
-                                                      style: GoogleFonts
-                                                          .ibmPlexSans(
-                                                              fontSize: 18,
-                                                              fontWeight:
-                                                                  FontWeight
-                                                                      .w400,
-                                                              color: Color(
-                                                                  0xff3C4E40)),
-                                                    ),
+                                                    TitleText(
+                                                        titleTextValue:
+                                                            '${content.hijriDay} ${content.hijrimonth} ${content.hijriYear}'),
+                                                    TitleText(
+                                                        titleTextValue:
+                                                            '${DateFormat.yMMMMEEEEd().format(aDateTime)}'),
                                                     SizedBox(
                                                       height: 10,
                                                     ),
@@ -141,411 +127,66 @@ class _PrayerTimeState extends State<PrayerTime> {
                                                         MainAxisAlignment
                                                             .spaceEvenly,
                                                     children: [
-                                                      Padding(
-                                                        padding:
-                                                            const EdgeInsets
-                                                                    .symmetric(
-                                                                horizontal: 20),
-                                                        child: Row(
-                                                          // mainAxisSize:
-                                                          //  MainAxisSize.min,
-                                                          mainAxisAlignment:
-                                                              MainAxisAlignment
-                                                                  .spaceBetween,
-                                                          children: [
-                                                            Expanded(
-                                                              flex: 1,
-                                                              child: Text(
-                                                                'Fajr',
-                                                                style: GoogleFonts.ibmPlexSans(
-                                                                    fontSize:
-                                                                        20,
-                                                                    fontWeight:
-                                                                        FontWeight
-                                                                            .w400,
-                                                                    color: Color(
-                                                                        0xff3C4E40)),
-                                                              ),
-                                                            ),
-                                                            Expanded(
-                                                              flex: 1,
-                                                              child: Icon(
-                                                                CarbonIcons
-                                                                    .mostly_cloudy_night,
-                                                                color: Color(
-                                                                    0xff3C4E40),
-                                                                size: 34,
-                                                              ),
-                                                            ),
-                                                            Expanded(
-                                                              flex: 1,
-                                                              child: Text(
-                                                                '${DateFormat.jm().format(DateFormat("hh:mm").parse('${content.subah}'))}',
-                                                                style: GoogleFonts.ibmPlexSans(
-                                                                    fontSize:
-                                                                        20,
-                                                                    fontWeight:
-                                                                        FontWeight
-                                                                            .w400,
-                                                                    color: Color(
-                                                                        0xff3C4E40)),
-                                                                textAlign:
-                                                                    TextAlign
-                                                                        .right,
-                                                              ),
-                                                            ),
-                                                          ],
-                                                        ),
+                                                      TimingWidget(
+                                                        prayerTitle: 'Fajr',
+                                                        prayerTimeIcon: CarbonIcons
+                                                            .mostly_cloudy_night,
+                                                        prayerTime:
+                                                            '${DateFormat.jm().format(DateFormat("hh:mm").parse('${content.subah}'))}',
+                                                        iconSize: 34,
                                                       ),
                                                       Divider(),
-                                                      Padding(
-                                                        padding:
-                                                            const EdgeInsets
-                                                                    .symmetric(
-                                                                horizontal: 20),
-                                                        child: Row(
-                                                          // mainAxisSize:
-                                                          //  MainAxisSize.min,
-                                                          mainAxisAlignment:
-                                                              MainAxisAlignment
-                                                                  .spaceBetween,
-                                                          children: [
-                                                            Expanded(
-                                                              flex: 1,
-                                                              child: Text(
-                                                                'Sunrise',
-                                                                style: GoogleFonts.ibmPlexSans(
-                                                                    fontSize:
-                                                                        20,
-                                                                    fontWeight:
-                                                                        FontWeight
-                                                                            .w400,
-                                                                    color: Color(
-                                                                        0xff3C4E40)),
-                                                              ),
-                                                            ),
-                                                            const Expanded(
-                                                              flex: 1,
-                                                              child: Icon(
-                                                                WeatherIcons
-                                                                    .sunrise,
-                                                                color: Color(
-                                                                    0xff3C4E40),
-                                                                size: 26,
-                                                              ),
-
-                                                              // Icon(
-                                                              //   CarbonIcons
-                                                              //       .partly_cloudy,
-                                                              //   color: Color(
-                                                              //       0xff3C4E40),
-                                                              //   size: 34,
-                                                              // ),
-                                                            ),
-                                                            Expanded(
-                                                              flex: 1,
-                                                              child: Text(
-                                                                '${DateFormat.jm().format(DateFormat("hh:mm").parse('${content.sunrise}'))}',
-                                                                style: GoogleFonts.ibmPlexSans(
-                                                                    fontSize:
-                                                                        20,
-                                                                    fontWeight:
-                                                                        FontWeight
-                                                                            .w400,
-                                                                    color: Color(
-                                                                        0xff3C4E40)),
-                                                                textAlign:
-                                                                    TextAlign
-                                                                        .right,
-                                                              ),
-                                                            ),
-                                                          ],
-                                                        ),
+                                                      TimingWidget(
+                                                        prayerTitle: 'Sunrise',
+                                                        prayerTimeIcon:
+                                                            WeatherIcons
+                                                                .sunrise,
+                                                        prayerTime:
+                                                            '${DateFormat.jm().format(DateFormat("hh:mm").parse('${content.sunrise}'))}',
                                                       ),
                                                       Divider(),
-                                                      Padding(
-                                                        padding:
-                                                            const EdgeInsets
-                                                                    .symmetric(
-                                                                horizontal: 20),
-                                                        child: Row(
-                                                          // mainAxisSize:
-                                                          //  MainAxisSize.min,
-                                                          mainAxisAlignment:
-                                                              MainAxisAlignment
-                                                                  .spaceBetween,
-                                                          children: [
-                                                            Expanded(
-                                                              flex: 1,
-                                                              child: Text(
-                                                                'Dhuhr',
-                                                                style: GoogleFonts.ibmPlexSans(
-                                                                    fontSize:
-                                                                        20,
-                                                                    fontWeight:
-                                                                        FontWeight
-                                                                            .w400,
-                                                                    color: Color(
-                                                                        0xff3C4E40)),
-                                                              ),
-                                                            ),
-                                                            const Expanded(
-                                                              flex: 1,
-                                                              child: Icon(
-                                                                WeatherIcons
-                                                                    .day_sunny,
-                                                                color: Color(
-                                                                    0xff3C4E40),
-                                                                size: 26,
-                                                              ),
-                                                            ),
-                                                            Expanded(
-                                                              flex: 1,
-                                                              child: Text(
-                                                                '${DateFormat.jm().format(DateFormat("HH:mm").parse('${content.luhar}'))}',
-                                                                style: GoogleFonts.ibmPlexSans(
-                                                                    fontSize:
-                                                                        20,
-                                                                    fontWeight:
-                                                                        FontWeight
-                                                                            .w400,
-                                                                    color: Color(
-                                                                        0xff3C4E40)),
-                                                                textAlign:
-                                                                    TextAlign
-                                                                        .right,
-                                                              ),
-                                                            ),
-                                                          ],
-                                                        ),
+                                                      TimingWidget(
+                                                        prayerTitle: 'Dhuhr',
+                                                        prayerTimeIcon:
+                                                            WeatherIcons
+                                                                .day_sunny,
+                                                        prayerTime:
+                                                            '${DateFormat.jm().format(DateFormat("HH:mm").parse('${content.luhar}'))}',
                                                       ),
                                                       Divider(),
-                                                      Padding(
-                                                        padding:
-                                                            const EdgeInsets
-                                                                    .symmetric(
-                                                                horizontal: 20),
-                                                        child: Row(
-                                                          // mainAxisSize:
-                                                          //  MainAxisSize.min,
-                                                          mainAxisAlignment:
-                                                              MainAxisAlignment
-                                                                  .spaceBetween,
-                                                          children: [
-                                                            Expanded(
-                                                              flex: 1,
-                                                              child: Text(
-                                                                'Asr',
-                                                                style: GoogleFonts.ibmPlexSans(
-                                                                    fontSize:
-                                                                        20,
-                                                                    fontWeight:
-                                                                        FontWeight
-                                                                            .w400,
-                                                                    color: Color(
-                                                                        0xff3C4E40)),
-                                                              ),
-                                                            ),
-                                                            const Expanded(
-                                                              flex: 1,
-                                                              child: Icon(
-                                                                WeatherIcons
-                                                                    .horizon_alt,
-                                                                color: Color(
-                                                                    0xff3C4E40),
-                                                                size: 26,
-                                                              ),
-                                                            ),
-                                                            Expanded(
-                                                              flex: 1,
-                                                              child: Text(
-                                                                '${DateFormat.jm().format(DateFormat("hh:mm").parse('${content.asar}'))}',
-                                                                style: GoogleFonts.ibmPlexSans(
-                                                                    fontSize:
-                                                                        20,
-                                                                    fontWeight:
-                                                                        FontWeight
-                                                                            .w400,
-                                                                    color: Color(
-                                                                        0xff3C4E40)),
-                                                                textAlign:
-                                                                    TextAlign
-                                                                        .right,
-                                                              ),
-                                                            ),
-                                                          ],
-                                                        ),
+                                                      TimingWidget(
+                                                        prayerTitle: 'Asr',
+                                                        prayerTimeIcon:
+                                                            WeatherIcons
+                                                                .horizon_alt,
+                                                        prayerTime:
+                                                            '${DateFormat.jm().format(DateFormat("hh:mm").parse('${content.asar}'))}',
                                                       ),
                                                       Divider(),
-                                                      Padding(
-                                                        padding:
-                                                            const EdgeInsets
-                                                                    .symmetric(
-                                                                horizontal: 20),
-                                                        child: Row(
-                                                          // mainAxisSize:
-                                                          //  MainAxisSize.min,
-                                                          mainAxisAlignment:
-                                                              MainAxisAlignment
-                                                                  .spaceBetween,
-                                                          children: [
-                                                            Expanded(
-                                                              flex: 1,
-                                                              child: Text(
-                                                                'Sunset',
-                                                                style: GoogleFonts.ibmPlexSans(
-                                                                    fontSize:
-                                                                        20,
-                                                                    fontWeight:
-                                                                        FontWeight
-                                                                            .w400,
-                                                                    color: const Color(
-                                                                        0xff3C4E40)),
-                                                              ),
-                                                            ),
-                                                            const Expanded(
-                                                              flex: 1,
-                                                              child: Icon(
-                                                                WeatherIcons
-                                                                    .sunset,
-                                                                color: Color(
-                                                                    0xff3C4E40),
-                                                                size: 26,
-                                                              ),
-                                                            ),
-                                                            Expanded(
-                                                              flex: 1,
-                                                              child: Text(
-                                                                '${DateFormat.jm().format(DateFormat("hh:mm").parse('${content.sunset}'))}',
-                                                                style: GoogleFonts.ibmPlexSans(
-                                                                    fontSize:
-                                                                        20,
-                                                                    fontWeight:
-                                                                        FontWeight
-                                                                            .w400,
-                                                                    color: Color(
-                                                                        0xff3C4E40)),
-                                                                textAlign:
-                                                                    TextAlign
-                                                                        .right,
-                                                              ),
-                                                            ),
-                                                          ],
-                                                        ),
+                                                      TimingWidget(
+                                                        prayerTitle: 'Sunset',
+                                                        prayerTimeIcon:
+                                                            WeatherIcons.sunset,
+                                                        prayerTime:
+                                                            '${DateFormat.jm().format(DateFormat("hh:mm").parse('${content.sunset}'))}',
                                                       ),
                                                       Divider(),
-                                                      Padding(
-                                                        padding:
-                                                            const EdgeInsets
-                                                                    .symmetric(
-                                                                horizontal: 20),
-                                                        child: Row(
-                                                          // mainAxisSize:
-                                                          //  MainAxisSize.min,
-                                                          mainAxisAlignment:
-                                                              MainAxisAlignment
-                                                                  .spaceBetween,
-                                                          children: [
-                                                            Expanded(
-                                                              flex: 1,
-                                                              child: Text(
-                                                                'Maghrib',
-                                                                style: GoogleFonts.ibmPlexSans(
-                                                                    fontSize:
-                                                                        20,
-                                                                    fontWeight:
-                                                                        FontWeight
-                                                                            .w400,
-                                                                    color: Color(
-                                                                        0xff3C4E40)),
-                                                              ),
-                                                            ),
-                                                            Expanded(
-                                                              flex: 1,
-                                                              child: Icon(
-                                                                CarbonIcons
-                                                                    .mostly_cloudy_night,
-                                                                color: Color(
-                                                                    0xff3C4E40),
-                                                                size: 34,
-                                                              ),
-                                                            ),
-                                                            Expanded(
-                                                              flex: 1,
-                                                              child: Text(
-                                                                '${DateFormat.jm().format(DateFormat("hh:mm").parse('${content.mahgrib}'))}',
-                                                                style: GoogleFonts.ibmPlexSans(
-                                                                    fontSize:
-                                                                        20,
-                                                                    fontWeight:
-                                                                        FontWeight
-                                                                            .w400,
-                                                                    color: Color(
-                                                                        0xff3C4E40)),
-                                                                textAlign:
-                                                                    TextAlign
-                                                                        .right,
-                                                              ),
-                                                            ),
-                                                          ],
-                                                        ),
+                                                      TimingWidget(
+                                                        prayerTitle: 'Maghrib',
+                                                        prayerTimeIcon: CarbonIcons
+                                                            .mostly_cloudy_night,
+                                                        prayerTime:
+                                                            '${DateFormat.jm().format(DateFormat("hh:mm").parse('${content.mahgrib}'))}',
+                                                        iconSize: 34,
                                                       ),
                                                       Divider(),
-                                                      Padding(
-                                                        padding:
-                                                            const EdgeInsets
-                                                                    .symmetric(
-                                                                horizontal: 20),
-                                                        child: Row(
-                                                          // mainAxisSize:
-                                                          //  MainAxisSize.min,
-                                                          mainAxisAlignment:
-                                                              MainAxisAlignment
-                                                                  .spaceBetween,
-                                                          children: [
-                                                            Expanded(
-                                                              flex: 1,
-                                                              child: Text(
-                                                                'Isha',
-                                                                style: GoogleFonts.ibmPlexSans(
-                                                                    fontSize:
-                                                                        20,
-                                                                    fontWeight:
-                                                                        FontWeight
-                                                                            .w400,
-                                                                    color: Color(
-                                                                        0xff3C4E40)),
-                                                              ),
-                                                            ),
-                                                            Expanded(
-                                                              flex: 1,
-                                                              child: Icon(
-                                                                CarbonIcons
-                                                                    .moon,
-                                                                color: Color(
-                                                                    0xff3C4E40),
-                                                                size: 34,
-                                                              ),
-                                                            ),
-                                                            Expanded(
-                                                              flex: 1,
-                                                              child: Text(
-                                                                '${DateFormat.jm().format(DateFormat("hh:mm").parse('${content.isha}'))}',
-                                                                style: GoogleFonts.ibmPlexSans(
-                                                                    fontSize:
-                                                                        20,
-                                                                    fontWeight:
-                                                                        FontWeight
-                                                                            .w400,
-                                                                    color: Color(
-                                                                        0xff3C4E40)),
-                                                                textAlign:
-                                                                    TextAlign
-                                                                        .right,
-                                                              ),
-                                                            ),
-                                                          ],
-                                                        ),
+                                                      TimingWidget(
+                                                        prayerTitle: 'Isha',
+                                                        prayerTimeIcon:
+                                                            CarbonIcons.moon,
+                                                        prayerTime:
+                                                            '${DateFormat.jm().format(DateFormat("hh:mm").parse('${content.isha}'))}',
+                                                        iconSize: 26,
                                                       ),
                                                       Divider(),
                                                     ],

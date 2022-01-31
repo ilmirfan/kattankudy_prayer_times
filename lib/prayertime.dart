@@ -44,7 +44,8 @@ class _PrayerTimeState extends State<PrayerTime> {
                     //something I messedup here with the layout. I don't know the problem with my device or my code.
                     height: kIsWeb
                         ? MediaQuery.of(context).size.height
-                        : MediaQuery.of(context).size.height - 27,
+                        : MediaQuery.of(context).size.height -
+                            MediaQuery.of(context).padding.top,
                     width: MediaQuery.of(context).size.width,
                     decoration: const BoxDecoration(
                       gradient: LinearGradient(
